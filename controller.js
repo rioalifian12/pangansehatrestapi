@@ -52,3 +52,23 @@ exports.createNewUser = function (req, res) {
     }
   );
 };
+
+// mengubah data user by id
+exports.editUser = function (req, res) {
+  var id = req.body.id;
+  var nama = req.body.nama;
+  var email = req.body.email;
+  var umur = req.body.umur;
+
+  connection.query(
+    "UPDATE user SET nama=?, email=?, umur=? WHERE id=?",
+    [nama, email, umur, id],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.ok("Berhasil mengubah data!", res);
+      }
+    }
+  );
+};
