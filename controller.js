@@ -33,3 +33,22 @@ exports.getUserById = function (req, res) {
     }
   );
 };
+
+// menambahkan data user
+exports.createNewUser = function (req, res) {
+  var nama = req.body.nama;
+  var email = req.body.email;
+  var umur = req.body.umur;
+
+  connection.query(
+    "INSERT INTO user (nama, email, umur) VALUES (?,?,?)",
+    [nama, email, umur],
+    function (error, rows, fields) {
+      if (error) {
+        console.log(error);
+      } else {
+        response.ok("Berhasil menambahkan data!", res);
+      }
+    }
+  );
+};
