@@ -2,10 +2,6 @@
 
 var response = require("./res");
 var connection = require("./koneksi");
-var mysql = require("mysql");
-var jwt = require("jsonwebtoken");
-var config = require("../config/secret");
-var ip = require("ip");
 
 exports.index = function (req, res) {
   response.ok("Aplikasi REST API berjalan!", res);
@@ -39,42 +35,23 @@ exports.getUserById = function (req, res) {
 };
 
 // menambahkan data user
-exports.createNewUser = function (req, res) {
-  var post = {
-    nama: req.body.nama,
-    email: req.body.email,
-    password: md5(req.body.password),
-    umur: req.body.umur,
-    role: req.body.role,
-    tanggal_daftar: new Date(),
-  };
+// exports.createNewUser = function (req, res) {
+//   var nama = req.body.nama;
+//   var email = req.body.email;
+//   var umur = req.body.umur;
 
-  var query = "SELECT email FROM ?? WHERE ??";
-  var table = ["user", "email", post.email];
-
-  query = mysql.format(query, table);
-
-  connection.query(query, function (error, rows) {
-    if (error) {
-      console.log(error);
-    } else {
-      if (rows.length == 0) {
-        var query = "INSERT INTO ?? SET ?";
-        var table = ["user"];
-        query = mysql.format(query, table);
-        connection.query(query, post, function (error, rows) {
-          if (error) {
-            console.log(error);
-          } else {
-            response.ok("Berhasil menambahkan data user!", res);
-          }
-        });
-      } else {
-        response.ok("Email sudah terdaftar!", res);
-      }
-    }
-  });
-};
+//   connection.query(
+//     "INSERT INTO user (nama, email, umur) VALUES (?,?,?)",
+//     [nama, email, umur],
+//     function (error, rows, fields) {
+//       if (error) {
+//         console.log(error);
+//       } else {
+//         response.ok("Berhasil menambahkan data!", res);
+//       }
+//     }
+//   );
+// };
 
 // mengubah data user by id
 exports.editUser = function (req, res) {
