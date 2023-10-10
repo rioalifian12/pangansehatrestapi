@@ -1,0 +1,24 @@
+{
+  "name": "pangansehatrestapi",
+  "version": "1.0.0",
+  "description": "rest api pangansehat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rioalifian12/pangansehatrestapi.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "nodejs"
+  ],
+  "author": "rioalifian12",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rioalifian12/pangansehatrestapi/issues"
+  },
+  "homepage": "https://github.com/rioalifian12/pangansehatrestapi#readme"
+}
