@@ -12,4 +12,6 @@ module.exports = function (app) {
   app.route("/add").post(jsonku.createNewUser);
 
   app.route("/edit").put(jsonku.editUser);
+
+  app.route("/delete").delete(jsonku.deleteUser);
 };
