@@ -2,6 +2,8 @@
 
 var response = require("./res");
 var connection = require("./koneksi");
+var mysql = require("mysql");
+var md5 = require("md5");
 
 exports.index = function (req, res) {
   response.ok("Aplikasi REST API berjalan!", res);
@@ -65,7 +67,7 @@ exports.editUser = function (req, res) {
 
   connection.query(
     "UPDATE user SET nama=?, email=?, password=?, umur=?, role=?, tanggal_daftar=? WHERE id_user=?",
-    [nama, email, password, , umur, role, tanggal_daftar, id],
+    [nama, email, password, umur, role, tanggal_daftar, id],
     function (error, rows, fields) {
       if (error) {
         console.log(error);
