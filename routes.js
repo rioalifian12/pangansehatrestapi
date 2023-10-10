@@ -14,4 +14,6 @@ module.exports = function (app) {
   app.route("/edit").put(jsonku.editUser);
 
   app.route("/delete").delete(jsonku.deleteUser);
+
+  app.route("/showlayanan").get(jsonku.showGroupNamaLayanan);
 };
